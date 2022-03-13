@@ -31,4 +31,17 @@ def exists_word(word, instance):
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    result = list()
+
+    for data in instance.queue:
+        file = search_by_file(data, word)
+
+        occurrences = file['ocorrencias']
+        if len(occurrences) != 0:
+            result.append({
+                "palavra": word,
+                "arquivo": data,
+                "ocorrencias": occurrences
+            }
+            )
+    return result
